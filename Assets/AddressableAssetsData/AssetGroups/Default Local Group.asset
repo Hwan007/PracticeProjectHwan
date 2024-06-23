@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b342db585e03d7e418619ac6549f04ca
+  m_SerializeEntries:
+  - m_GUID: 367379dba0a21814b92bf426ce1d58c2
+    m_Address: Assets/ScriptableObjects/ItemDescription.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f88efa22046cb0041bfa3423664094e6
+    m_Address: Assets/ScriptableObjects/KorStatDescription.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c409bee25d3e8a74a872c3ca3384850c
+    m_Address: Assets/ScriptableObjects/KorSkillDescription.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3e71cd160be9b540b59a8ecee6ea7ca
+    m_Address: Assets/Prefabs/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45cecbad163a1d04698e0c832a1198d5
+    m_Address: Assets/Prefabs/UI/StartBtn.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8b73be71996f2a40a211660a3165cd4
+    m_Address: Assets/Prefabs/UI/Title.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20efdf6237b9d604696b93bd7e5fb24a
+    m_Address: Assets/Prefabs/UI/MainMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a052e116d77d8445b7fa0103f4c5eea
+    m_Address: Assets/Prefabs/UI/Inventory.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e1fbff0ca909b14c9271d43d4f8dd20
+    m_Address: Assets/Prefabs/UI/Status.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f736a1fc69cec34ba2e48138e3506c3
+    m_Address: Assets/Prefabs/UI/StageInfo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cd928be0ff5e4a4e8ccff9bceeadf2e
+    m_Address: Assets/Prefabs/UI/SkillBtn.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2daa0ff3d0a5aa64a8f9da18f4d4d00c
+    m_Address: Assets/Prefabs/UI/Option.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0aafa2b6994ae4242a5710c268391ab3
+    m_Address: Assets/Prefabs/UI/CenterBlockMessage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0987bc832c7509c40b281930874ec156, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e48a9cc50bc8a304e99c856549ec707f, type: 2}
+    - {fileID: 11400000, guid: 9e3bd4ad990b2fc4ba83a6beffbd6544, type: 2}
