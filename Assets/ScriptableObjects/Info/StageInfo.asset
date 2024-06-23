@@ -12,54 +12,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e127f614ee4b0a143ae681a647cc94e2, type: 3}
   m_Name: StageInfo
   m_EditorClassIdentifier: 
-  limitTime: 30
+  limitTime: 60
   assets:
-  - m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 
+  - m_AssetGUID: ab25d45c803e2854cb32b416d453639c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   stageInfos:
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
   - index: 0
-    fromBeforeMonster: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5
+  - index: 0
+    fromBeforeMonster: 0.5

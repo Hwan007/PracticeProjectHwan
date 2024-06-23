@@ -9,8 +9,7 @@ public class UISkillBtn : UIBase {
     [SerializeField] List<TextPair> texts;
     [SerializeField] Button JumpSkill;
     [SerializeField] Button AttackSkill;
-    public event Action OnJumpSkill;
-    public event Action OnAttackSkill;
+
     public override UIBase CloseUI() {
         base.CloseUI();
         gameObject.SetActive(false);

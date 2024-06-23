@@ -56,35 +56,53 @@ MonoBehaviour:
   - m_GUID: 20efdf6237b9d604696b93bd7e5fb24a
     m_Address: Assets/Prefabs/UI/MainMenu.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a052e116d77d8445b7fa0103f4c5eea
     m_Address: Assets/Prefabs/UI/Inventory.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5e1fbff0ca909b14c9271d43d4f8dd20
     m_Address: Assets/Prefabs/UI/Status.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f736a1fc69cec34ba2e48138e3506c3
     m_Address: Assets/Prefabs/UI/StageInfo.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3cd928be0ff5e4a4e8ccff9bceeadf2e
     m_Address: Assets/Prefabs/UI/SkillBtn.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2daa0ff3d0a5aa64a8f9da18f4d4d00c
     m_Address: Assets/Prefabs/UI/Option.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0aafa2b6994ae4242a5710c268391ab3
     m_Address: Assets/Prefabs/UI/CenterBlockMessage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab25d45c803e2854cb32b416d453639c
+    m_Address: Assets/Prefabs/Monster/Monster.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9f0a43146ae8ac4e8f045d301700a75
+    m_Address: Assets/ScriptableObjects/Info/StageInfo.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

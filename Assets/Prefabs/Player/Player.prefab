@@ -586,16 +586,16 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ca0b4f914a01f47b984cdf837a55f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator:
+  <animator>k__BackingField:
   - {fileID: 7103483710855517313}
   - {fileID: 2449914345254922799}
   - {fileID: 1196292313997183039}
@@ -644,7 +644,7 @@ MonoBehaviour:
   - {fileID: 2876910607765812951}
   - {fileID: 5366285086510519699}
   - {fileID: 5307807123132630341}
-  aniData:
+  <aniData>k__BackingField:
   - parametername:
     - parameterName: Idle
       state: 1
@@ -661,11 +661,15 @@ MonoBehaviour:
     - parameterName: AttackSkill
       state: 7
     - parameterName: JumpSkill
-      state: 7
+      state: 8
   - parametername:
+    - parameterName: None
+      state: 0
     - parameterName: Attack
       state: 5
   - parametername:
+    - parameterName: None
+      state: 0
     - parameterName: Defense
       state: 6
 --- !u!114 &5684822509246584456
@@ -685,6 +689,8 @@ MonoBehaviour:
     m_Bits: 128
   attackCollider: {fileID: 9079836510267191253}
   shieldCollider: {fileID: 1160249756627725299}
+  baseAttackTime: 0.5
+  baseDefenseTime: 0.3
 --- !u!114 &4120859068074822751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,4 +703,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa210f9be0f17fa469212111672d67ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 0
+  sqrMaxVelocity: 25

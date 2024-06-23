@@ -667,7 +667,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiAssetRef:
+  - m_AssetGUID: 1a052e116d77d8445b7fa0103f4c5eea
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 20efdf6237b9d604696b93bd7e5fb24a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 3cd928be0ff5e4a4e8ccff9bceeadf2e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 8f736a1fc69cec34ba2e48138e3506c3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   - m_AssetGUID: 45cecbad163a1d04698e0c832a1198d5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 5e1fbff0ca909b14c9271d43d4f8dd20
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -1089,27 +1109,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1355024068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 979810c0cdffde64dad102fb5625a81d, type: 3}
+  m_Script: {fileID: 11500000, guid: 09f9ea64f4d893b4fba3e8a43c1c4a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statDesc:
-  - m_AssetGUID: f88efa22046cb0041bfa3423664094e6
+  statDescAssetRef:
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  itemDesc:
-  - m_AssetGUID: 367379dba0a21814b92bf426ce1d58c2
+  itemDescAssetRef:
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  skillDesc:
-  - m_AssetGUID: c409bee25d3e8a74a872c3ca3384850c
+  skillDescAssetRef:
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  itemData: []
-  skillData: []
-  stageData: []
 --- !u!4 &1355024070
 Transform:
   m_ObjectHideFlags: 0
@@ -6303,7 +6320,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   stageInfos:
-  - m_AssetGUID: 
+  - m_AssetGUID: a9f0a43146ae8ac4e8f045d301700a75
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
