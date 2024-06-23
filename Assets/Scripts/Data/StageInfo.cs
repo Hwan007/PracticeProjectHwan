@@ -15,5 +15,5 @@ public class StageInfo : ScriptableObject {
 public struct StageInfoPair {
     public int index;
     public float fromBeforeMonster;
-    public BaseStat stat;
+    public CustomStat stat;
 }

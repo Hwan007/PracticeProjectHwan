@@ -1,9 +1,6 @@
 using Define;
 using Stat;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Skill {
@@ -22,7 +19,7 @@ namespace Skill {
         public override string GetSkillName() {
             return skillName;
         }
-        public override IEnumerator StartSkill(BaseContainer container) {
+        public override IEnumerator StartSkill(PlayerContainer container) {
             float duration = Duration;
             StatModifier<BaseStat> modifier = new StatModifier<BaseStat>(CalculationType, Buff.ConvertToBaseStat());
             container.CharacterStat.ModifyStat(modifier);

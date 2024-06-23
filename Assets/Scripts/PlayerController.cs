@@ -157,7 +157,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Touch"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""8df1c906-839f-4c17-ab50-4c071cefe77c"",
                     ""expectedControlType"": ""Touch"",
                     ""processors"": """",

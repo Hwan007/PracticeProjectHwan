@@ -47,8 +47,7 @@ public class UIMainMenu : UIBase {
     public void OnStartBtn() {
         UIManager.Instance.CloseAllUI(1);
         OnStart?.Invoke();
-        StageManager.Instance.DeployPlayer(CharacterManager.Instance.GetPlayerStat(), (player) => StageManager.Instance.StartStage(0));
-        UIManager.Instance.TryGetUI<UIStageInfo>(nameof(UIStageInfo), ui => ui.DrawUI());
+        
     }
     public void OnInventoryBtn() {
         UIManager.Instance.CloseAllUI(1);

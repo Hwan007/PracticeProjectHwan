@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEditor.TerrainTools;
+#endif
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Description/Item")]
@@ -27,6 +28,7 @@ public class ItemDescription : ScriptableObject {
         }
     }
 }
+#if UNITY_EDITOR
 
 [CustomEditor(typeof(ItemDescription))]
 public class CustomEditotItemDescription : Editor {
@@ -41,3 +43,4 @@ public class CustomEditotItemDescription : Editor {
 
     }
 }
+#endif

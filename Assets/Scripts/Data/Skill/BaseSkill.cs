@@ -16,6 +16,6 @@ namespace Skill {
             this.skillName = skillName;
             this.description = description;
         }
-        public abstract IEnumerator StartSkill(BaseContainer container);
+        public abstract IEnumerator StartSkill(PlayerContainer container);
     }
 }

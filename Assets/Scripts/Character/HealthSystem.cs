@@ -40,8 +40,10 @@ public class HealthSystem {
     public int ChangeHealth(int point) {
         current = Mathf.Clamp(current + point, 0, total);
         OnHealthChange?.Invoke(current, total);
-        if (current <= 0)
+        if (current <= 0) {
             OnDead?.Invoke(container);
+            OnDead = null;
+        }
         return current;
     }
     void OnChangeStat(ECalculationType type, BaseStat point) {

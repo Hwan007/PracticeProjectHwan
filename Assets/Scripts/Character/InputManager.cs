@@ -4,39 +4,28 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-public class InputManager : BaseInput, PlayerController.IMobileActions,
-#if UNITY_EDITOR
-    PlayerController.IPCActions
-#endif
-    {
+public class InputManager : BaseInput, PlayerController.IMobileActions, PlayerController.IPCActions {
     Vector2 displaySize;
-    [Header("Counter Clock Wise From Top")] [SerializeField] Vector4 offsetFromBorder;
+    [Header("Counter Clock Wise From Top")][SerializeField] Vector4 offsetFromBorder;
     Vector2 minBorder;
     Vector2 MaxBorder;
     [SerializeField] float attackThresholdDist;
     HashSet<int> trackedTouchID;
-    //PlayerInput input;
-    private bool isCanControl;
+    private bool isCanControl = true;
     public bool CanControl {
         get => isCanControl;
         set {
             isCanControl = value;
             if (!value) {
-#if UNITY_EDITOR
-                // TODO : Is need do something?
-#endif
+
             }
         }
     }
 
     PlayerController inputActions;
-#if UNITY_EDITOR
     PlayerController.PCActions pcActions;
-#else
     PlayerController.MobileActions moblieActions;
-#endif
 
-#if UNITY_EDITOR
     // PC control
     public void OnAttack(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Started)
@@ -67,10 +56,12 @@ public class InputManager : BaseInput, PlayerController.IMobileActions,
         if (context.phase == InputActionPhase.Started)
             CallCancelEvent();
     }
-#endif
+
     // Moblie control
     public void OnCancelTouch(InputAction.CallbackContext context) {
         CallCancelEvent();
+        PlayerPrefs.DeleteAll();
+        Application.Quit();
     }
 
     public void OnTouch(InputAction.CallbackContext context) {
@@ -89,7 +80,7 @@ public class InputManager : BaseInput, PlayerController.IMobileActions,
                 if (trackedTouchID.Contains(touch.touchId) && CheckTouchArea(touch.position)) {
                     Vector2 judge = touch.startPosition - touch.position;
                     if (judge.magnitude > attackThresholdDist) {
-                        if (judge.y < 0)
+                        if (judge.y > 0)
                             CallDefenseEvent();
                         else
                             CallJumpEvent();
@@ -155,17 +146,14 @@ public class InputManager : BaseInput, PlayerController.IMobileActions,
         inputActions = new PlayerController();
         trackedTouchID = new HashSet<int>();
         //var input = gameObject.GetComponent<PlayerInput>();
-#if UNITY_EDITOR
         pcActions = inputActions.PC;
         pcActions.AddCallbacks(this);
-#else
         moblieActions = inputActions.Mobile;
         moblieActions.AddCallbacks(this);
-        UIManager.Instance.TryGetUI<UISkillBtn>(nameof(UISkillBtn), ui => { 
-            ui.OnAttackSkill += CallAttackSkillEvent; 
-            ui.OnJumpSkill += CallJumpSkillEvent;
-        });
-#endif
+        //UIManager.Instance.TryGetUI<UISkillBtn>(nameof(UISkillBtn), ui => { 
+        //    ui.OnAttackSkill += CallAttackSkillEvent; 
+        //    ui.OnJumpSkill += CallJumpSkillEvent;
+        //});
     }
 
     public override void ConnectInput(IControllerable target) {

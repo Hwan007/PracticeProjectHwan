@@ -242,6 +242,8 @@ MonoBehaviour:
       value: 5
     - type: 1
       value: 100
+    - type: 21
+      value: 200
     - type: 2
       value: 10
     - type: 7
@@ -250,8 +252,10 @@ MonoBehaviour:
       value: 1
     - type: 15
       value: 10
+    - type: 16
+      value: 1000
     - type: 17
-      value: 10
+      value: 1000
     - type: 18
       value: 1
 --- !u!4 &204875176
@@ -550,9 +554,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraIndex: 0
-  dampingTime: 0.01
-  offset: {x: 0, y: 0}
-  shakeDuration: 0.01
+  dampingTime: 0.1
+  offset: {x: 0, y: 1}
+  shakeDuration: 0.1
   shakeMagnitude: 0.03
   shakeTime: 0.8
   borderFlag: 1
@@ -1113,17 +1117,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statDescAssetRef:
-    m_AssetGUID: 
+    m_AssetGUID: f88efa22046cb0041bfa3423664094e6
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   itemDescAssetRef:
-    m_AssetGUID: 
+    m_AssetGUID: 367379dba0a21814b92bf426ce1d58c2
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   skillDescAssetRef:
-    m_AssetGUID: 
+    m_AssetGUID: c409bee25d3e8a74a872c3ca3384850c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -1172,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetFromBorder: {x: 200, y: 50, z: 200, w: 50}
-  attackThresholdDist: 20
+  attackThresholdDist: 10
 --- !u!4 &1510312621
 Transform:
   m_ObjectHideFlags: 0

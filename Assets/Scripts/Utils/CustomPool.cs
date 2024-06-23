@@ -6,7 +6,7 @@ using UnityEngine;
 public class CustomPool<T> where T : MonoBehaviour {
     private T obj;
     private Transform root;
-    private Action<T> create;
+    private Action<T, CustomPool<T>> create;
     private Action<T> get;
     private Action<T> release;
     private Action<T> destroy;
@@ -20,7 +20,7 @@ public class CustomPool<T> where T : MonoBehaviour {
     public int UnusedCount => pool.Count;
     public LinkedList<T> UsedList => usedObjs;
 
-    public CustomPool(T prefab, Transform root, Action<T> createAction, Action<T> getAction,
+    public CustomPool(T prefab, Transform root, Action<T, CustomPool<T>> createAction, Action<T> getAction,
         Action<T> releaseAction, Action<T> destoryAction, int size, bool isFlexible) {
         obj = prefab;
         this.root = root;
@@ -38,7 +38,7 @@ public class CustomPool<T> where T : MonoBehaviour {
         }
     }
 
-    public static CustomPool<T> MakePool(T prefab, Transform root = null, Action<T> create = null, Action<T> get = null,
+    public static CustomPool<T> MakePool(T prefab, Transform root = null, Action<T, CustomPool<T>> create = null, Action<T> get = null,
         Action<T> release = null, Action<T> destroy = null, int poolSize = 10, bool isFlexible = true){
         return new CustomPool<T>(prefab, root, create, get, release, destroy, poolSize, isFlexible);
     }
@@ -46,7 +46,7 @@ public class CustomPool<T> where T : MonoBehaviour {
     private T Create() {
         var item = GameObject.Instantiate(obj, root);
         pool.Enqueue(item);
-        create?.Invoke(item);
+        create?.Invoke(item, this);
         return item;
     }
 
@@ -55,7 +55,7 @@ public class CustomPool<T> where T : MonoBehaviour {
         if (pool.Count <= 0) {
             if (flexible) {
                 item = GameObject.Instantiate(obj, root);
-                create?.Invoke(item);
+                create?.Invoke(item, this);
             }
             else {
                 item = usedObjs.First.Value;

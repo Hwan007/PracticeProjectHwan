@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 [CreateAssetMenu(menuName = "Description/Skill")]
 public class SkillDescription : ScriptableObject {
@@ -25,7 +27,7 @@ public class SkillDescription : ScriptableObject {
         }
     }
 }
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(SkillDescription))]
 public class CustomEditotSkillDescription : Editor {
     SkillDescription description;
@@ -38,3 +40,4 @@ public class CustomEditotSkillDescription : Editor {
         base.OnInspectorGUI();
     }
 }
+#endif

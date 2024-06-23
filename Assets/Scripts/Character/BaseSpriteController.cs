@@ -6,8 +6,9 @@ public class BaseSpriteController : MonoBehaviour {
     [SerializeField] protected SpriteRenderer[] spriteRenderer;
     [field: SerializeField] public AnimationData[] aniData { get; protected set; }
 
-    public virtual void Initialize(BaseContainer container) {
-        aniData.Initialize();
+    public virtual void Initialize(PlayerContainer container) {
+        foreach (var data in aniData)
+            data.InitializeAnimatorHash();
     }
 }
 

@@ -8,8 +8,8 @@ public class StateMachine : IControllerable {
     public PlayerContainer Container { get; protected set; }
     public CharacterStat CharacterStat { get => Container.CharacterStat; }
     public HealthSystem HealthSystem { get => Container.HealthSystem; }
-    public Movement Movement { get => Container.Movement; }
-    public BaseBattleSystem BattleSystem { get => Container.BattleSystem; }
+    public PlayerMovement Movement { get => Container.Movement; }
+    public PlayerBattleSystem BattleSystem { get => Container.BattleSystem; }
     public BaseSpriteController SpriteController { get => Container.SpriteController; }
     public AnimationData animationData { get; protected set; }
     public Animator animator { get; protected set; }
@@ -19,16 +19,20 @@ public class StateMachine : IControllerable {
     public EFsmState currentStateType { get; protected set; }
     #endregion
 
-    public StateMachine(BaseContainer container, AnimationData animationData, Animator animator, BaseInput input) {
+    public StateMachine(PlayerContainer container, AnimationData animationData, Animator animator, BaseInput input) {
+        states = new Dictionary<EFsmState, IState>();
+        Container = container;
         this.animationData = animationData;
         this.animator = animator;
         foreach (var data in animationData.AnimatorHash) {
             switch (data.Key) {
                 case EFsmState.None:
                     TryAddState(EFsmState.Ground, new NoneState(this, data.Key, input, null));
+                    TryChangeState(EFsmState.Ground);
                     break;
                 case EFsmState.Ground:
                     TryAddState(data.Key, new GroundState(this, data.Key, input, null));
+                    TryChangeState(EFsmState.Ground);
                     break;
                 case EFsmState.Jump:
                     TryAddState(data.Key, new JumpState(this, data.Key, input, null));
@@ -55,6 +59,9 @@ public class StateMachine : IControllerable {
         }
 
         this.input = input;
+    }
+    public bool ContainsState(EFsmState state) {
+        return states.ContainsKey(state);
     }
 
     public bool TryChangeState(EFsmState state) {

@@ -7,7 +7,7 @@ public class AddressableLoader {
     public static void LoadAsset<T>(AssetReference assetRef, Action<T> onComplete = null) {
         if (assetRef.Asset == null) {
             var asyncOpHandle = Addressables.LoadAssetAsync<T>(assetRef);
-            Debug.Log($"{asyncOpHandle.DebugName} {asyncOpHandle.PercentComplete}");
+            //Debug.Log($"{asyncOpHandle.DebugName} {asyncOpHandle.PercentComplete}");
             asyncOpHandle.Completed += (op) => {
                 if (op.Status == AsyncOperationStatus.Succeeded)
                     onComplete?.Invoke(op.Result);
@@ -22,7 +22,7 @@ public class AddressableLoader {
     public static bool DeployAsset(AssetReference assetRef, Vector3 position, Quaternion quaternion, Action<GameObject> onComplete = null) {
         if (assetRef.Asset == null) {
             var asyncOpHandle = Addressables.InstantiateAsync(assetRef, position, quaternion);
-            Debug.Log($"{asyncOpHandle.DebugName} {asyncOpHandle.PercentComplete}");
+            //Debug.Log($"{asyncOpHandle.DebugName} {asyncOpHandle.PercentComplete}");
             asyncOpHandle.Completed += (op) => {
                 if (op.Status == AsyncOperationStatus.Succeeded)
                     onComplete?.Invoke(op.Result);

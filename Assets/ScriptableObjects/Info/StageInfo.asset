@@ -20,62 +20,202 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   stageInfos:
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1
   - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
-  - index: 0
-    fromBeforeMonster: 0.5
+    fromBeforeMonster: 2
+    stat:
+      statList:
+      - type: 0
+        value: 10
+      - type: 2
+        value: 10
+      - type: 18
+        value: 1

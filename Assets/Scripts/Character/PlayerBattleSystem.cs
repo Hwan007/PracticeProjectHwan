@@ -3,21 +3,26 @@ using System;
 using UnityEngine;
 public class PlayerBattleSystem : BaseBattleSystem {
     [SerializeField] protected AttackCollider shieldCollider;
-    [SerializeField] protected float baseAttackTime;
-    [SerializeField] protected float baseDefenseTime;
-    float attackTime;
-    float shieldTime;
-    public event Action<BaseContainer> OnParryTarget;
+    [field: SerializeField] public float HitAnimationTime { get; protected set; }
+    [field: SerializeField] public float JumpAnimationTime { get; protected set; }
+    [field: SerializeField] public float DefenseAnimationTime { get; protected set; }
+
+    public bool canDefense { get; set; }
+    public bool canAttack { get; set; }
+
+    public event Action<BaseContainer> OnHitTarget;
+    public event Action<MonsterContainer> OnParryTarget;
     public event Action<float, float> OnAttackSkillTimer;
     public event Action<float, float> OnJumpSkillTimer;
+    public event Action OnAttackStart;
 
     protected float attackSkillTimer;
     protected float jumpSkillTimer;
     protected float attackTimer;
     protected float defenseTimer;
 
-    private BaseContainer container;
-
+    private PlayerContainer container;
+    protected CharacterStat stat;
     private void Update() {
         if (attackSkillTimer > 0) {
             attackSkillTimer -= Time.deltaTime;
@@ -44,28 +49,26 @@ public class PlayerBattleSystem : BaseBattleSystem {
             shieldCollider.OnCollider -= OnDefenseCollider;
         }
     }
-    void OnDefenseCollider(Collider2D collison) {
-        if (canDefense && CheckLayer(collison.gameObject.layer, targetLayer)) {
-            OnParryTarget?.Invoke(StageManager.Instance.TryGetContainer(collison.gameObject.GetInstanceID()));
+    void OnDefenseCollider(Collider2D collider) {
+        if (canDefense && CheckLayer(collider.gameObject.layer, targetLayer)) {
+            OnParryTarget?.Invoke(StageManager.Instance.TryGetContainer(collider.gameObject.GetInstanceID()));
         }
     }
-    public override bool DoAttack() {
+    public bool DoAttack() {
         if (attackTimer <= 0) {
-            // nothing to do. animation do attack.
-            attackTimer = stat.InstanceStat.totalStat.GetStat(Define.EStatType.AttackCoolTime);
+            attackTimer = stat.InstanceStat.totalStat.GetStat(Define.EStatType.AttackCoolTime) / 1000f;
             return true;
         }
         return false;
     }
-    public override bool DoDefense() {
+    public bool DoDefense() {
         if (defenseTimer <= 0) {
-            // nothing to do. animation do defense.
-            defenseTimer = stat.InstanceStat.totalStat.GetStat(Define.EStatType.DefSkillCoolTime);
+            defenseTimer = stat.InstanceStat.totalStat.GetStat(Define.EStatType.DefSkillCoolTime) / 1000f;
             return true;
         }
         return false;
     }
-    public override bool DoAttackSkill() {
+    public bool DoAttackSkill() {
         if (attackSkillTimer <= 0 && stat.AttackSkill != null) {
             StartCoroutine(stat.AttackSkill.StartSkill(container));
             attackSkillTimer = stat.AttackSkill.BaseCoolTime;
@@ -73,7 +76,7 @@ public class PlayerBattleSystem : BaseBattleSystem {
         }
         return false;
     }
-    public override bool DoJumpSkill() {
+    public bool DoJumpSkill() {
         if (jumpSkillTimer <= 0 && stat.JumpSkill != null) {
             StartCoroutine(stat.JumpSkill.StartSkill(container));
             jumpSkillTimer = stat.JumpSkill.BaseCoolTime;
@@ -81,14 +84,26 @@ public class PlayerBattleSystem : BaseBattleSystem {
         }
         return false;
     }
-    public override void Initialize(BaseContainer container, CharacterStat stat) {
-        base.Initialize(container, stat);
+    public void Initialize(PlayerContainer container, CharacterStat stat) {
+        this.stat = stat;
+        SubscribeOnCollider();
+        OnHitTarget = null;
+        OnHitTarget += (target) => {
+            foreach (var atk in stat.InstanceStat.totalStat.GetAttackData())
+                target.HealthSystem.ChangeHealth(atk);
+        };
         OnParryTarget = null;
         this.container = container;
         OnParryTarget += (target) => {
-            Vector2 dir = target.transform.position - transform.position;
             target.Movement.ApplyImpact(stat.InstanceStat.totalStat.GetStat(Define.EStatType.DefPower));
-            container.Movement.ApplyImpact(stat.InstanceStat.totalStat.GetStat(Define.EStatType.DefPower));
+            container.Movement.ApplyImpact(-stat.InstanceStat.totalStat.GetStat(Define.EStatType.DefPower));
         };
+    }
+
+    protected override void OnAttackCollider(Collider2D collider) {
+        if (canAttack && CheckLayer(collider.gameObject.layer, targetLayer)) {
+            var target = StageManager.Instance.TryGetContainer(collider.gameObject.GetInstanceID());
+            OnHitTarget?.Invoke(target);
+        }
     }
 }

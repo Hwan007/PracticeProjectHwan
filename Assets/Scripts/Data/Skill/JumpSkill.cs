@@ -18,7 +18,7 @@ namespace Skill {
         public override string GetSkillName() {
             return skillName;
         }
-        public override IEnumerator StartSkill(BaseContainer container) {
+        public override IEnumerator StartSkill(PlayerContainer container) {
             float duration = Duration;
             container.Movement.ChangeDownForce(0);
             container.Movement.ApplyImpact(Speed);

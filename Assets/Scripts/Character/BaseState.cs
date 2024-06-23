@@ -11,6 +11,11 @@ public class NoneState : BaseState {
 }
 public class GroundState : BaseState {
     public GroundState(StateMachine sm, EFsmState stateType, BaseInput input, BaseState parent) : base(sm, stateType, input, parent) { }
+    public override void Update() {
+        if (!CheckGround()) {
+            sm.TryChangeState(EFsmState.Air);
+        }
+    }
 }
 public class JumpState : BaseState {
     float coolTime;
@@ -18,7 +23,7 @@ public class JumpState : BaseState {
     }
     public override void Enter() {
         SetBoolAnimator(sm.animationData.AnimatorHash[state], true);
-        coolTime = sm.Container.JumpCoolTime;
+        coolTime = sm.BattleSystem.JumpAnimationTime;
     }
     public override void Exit() {
         SetBoolAnimator(sm.animationData.AnimatorHash[state], false);
@@ -49,7 +54,7 @@ public class HitState : BaseState {
     }
     public override void Enter() {
         base.Enter();
-        coolTime = sm.Container.HitCoolTime;
+        coolTime = sm.BattleSystem.HitAnimationTime;
     }
     public override void Update() {
         if (coolTime > 0)
@@ -67,21 +72,27 @@ public class AttackState : BaseState {
     public AttackState(StateMachine sm, EFsmState stateType, BaseInput input, BaseState parent) : base(sm, stateType, input, parent) { }
     public override void Enter() {
         base.Enter();
-        coolTime = sm.CharacterStat.InstanceStat.totalStat.GetStat(EStatType.AttackCoolTime);
-        sm.BattleSystem.CanAttack(true);
+        coolTime = sm.CharacterStat.InstanceStat.totalStat.GetStat(EStatType.AttackCoolTime) / 1000f;
+        sm.BattleSystem.canAttack = true;
     }
     public override void Exit() {
         base.Exit();
-        sm.BattleSystem.CanAttack(false);
+        sm.BattleSystem.canAttack = false;
     }
     public override void Update() {
         if (coolTime > 0)
             coolTime -= Time.deltaTime;
         if (coolTime <= 0) {
-            if (CheckGround())
-                sm.TryChangeState(EFsmState.Ground);
-            else
-                sm.TryChangeState(EFsmState.Air);
+            if (CheckGround()) {
+                if (sm.TryChangeState(EFsmState.Ground)) {
+                    sm.TryChangeState(EFsmState.None);
+                }
+            }
+            else {
+                if (sm.TryChangeState(EFsmState.Air)) {
+                    sm.TryChangeState(EFsmState.None);
+                }
+            }
         }
     }
 }
@@ -90,21 +101,27 @@ public class DefenseState : BaseState {
     public DefenseState(StateMachine sm, EFsmState stateType, BaseInput input, BaseState parent) : base(sm, stateType, input, parent) { }
     public override void Enter() {
         base.Enter();
-        coolTime = sm.CharacterStat.InstanceStat.totalStat.GetStat(EStatType.DefSkillCoolTime);
-        sm.BattleSystem.CanDefense(true);
+        coolTime = sm.BattleSystem.DefenseAnimationTime;
+        sm.BattleSystem.canDefense = true;
     }
     public override void Exit() {
         base.Exit();
-        sm.BattleSystem.CanDefense(false);
+        sm.BattleSystem.canDefense = false;
     }
     public override void Update() {
         if (coolTime > 0)
             coolTime -= Time.deltaTime;
         if (coolTime <= 0) {
-            if (CheckGround())
-                sm.TryChangeState(EFsmState.Ground);
-            else
-                sm.TryChangeState(EFsmState.Air);
+            if (CheckGround()) {
+                if (sm.TryChangeState(EFsmState.Ground)) {
+                    sm.TryChangeState(EFsmState.None);
+                }
+            }
+            else {
+                if (sm.TryChangeState(EFsmState.Air)) {
+                    sm.TryChangeState(EFsmState.None);
+                }
+            }
         }
     }
 }
@@ -149,7 +166,7 @@ public abstract class BaseState : IState, IControllerable {
         this.state = stateType;
         this.Parent = parent;
         this.input = input;
-        parent.childs.AddLast(this);
+        parent?.childs.AddLast(this);
     }
     public virtual void Enter() { SubscribeInput(input); SetBoolAnimator(sm.animationData.AnimatorHash[state], true); OnStateStart?.Invoke(); }
     public virtual void Exit() { UnsubscribeInput(input); SetBoolAnimator(sm.animationData.AnimatorHash[state], false); OnStateEnd?.Invoke(); }
@@ -170,27 +187,27 @@ public abstract class BaseState : IState, IControllerable {
         input.DefenseEvent -= ActOnDefense;
     }
     public virtual void ActOnJump() {
-        if (sm.Movement.DoJump()) {
+        if (sm.ContainsState(EFsmState.Jump) && sm.Movement.DoJump()) {
             sm.TryChangeState(EFsmState.Jump);
         }
     }
     public virtual void ActOnJumpSkill() {
-        if (sm.BattleSystem.DoJumpSkill()) {
+        if (sm.ContainsState(EFsmState.JumpSkill) && sm.BattleSystem.DoJumpSkill()) {
             sm.TryChangeState(EFsmState.JumpSkill);
         }
     }
     public virtual void ActOnAttack() {
-        if (sm.BattleSystem.DoAttack()) {
+        if (sm.ContainsState(EFsmState.Attack) && sm.BattleSystem.DoAttack()) {
             sm.TryChangeState(EFsmState.Attack);
         }
     }
     public virtual void ActOnAttackSkill() {
-        if (sm.BattleSystem.DoAttackSkill()) {
+        if (sm.ContainsState(EFsmState.AttackSkill) && sm.BattleSystem.DoAttackSkill()) {
             sm.TryChangeState(EFsmState.AttackSkill);
         }
     }
     public virtual void ActOnDefense() {
-        if (sm.BattleSystem.DoDefense()) {
+        if (sm.ContainsState(EFsmState.Defense) && sm.BattleSystem.DoDefense()) {
             sm.TryChangeState(EFsmState.Defense);
         }
     }
@@ -205,6 +222,7 @@ public abstract class BaseState : IState, IControllerable {
     }
     protected virtual void SetBoolAnimator(int hash, bool onoff) {
         sm.animator.SetBool(hash, onoff);
+        sm.animator.Play(0, 0, 0);
     }
     protected virtual void SetFloatAnimator(int hash, float value) {
         sm.animator.SetFloat(hash, value);

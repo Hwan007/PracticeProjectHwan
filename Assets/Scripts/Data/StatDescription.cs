@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Description/Stat")]
@@ -9,7 +11,7 @@ public class StatDescription : ScriptableObject {
         return strings[index];
     }
 }
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(StatDescription))]
 public class CustomEditotStatDescription : Editor {
     StatDescription description;
@@ -78,5 +80,5 @@ public class CustomEditotStatDescription : Editor {
             EditorUtility.SetDirty(this);
         }
     }
-
 }
+#endif

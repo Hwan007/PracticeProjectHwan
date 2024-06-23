@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8929091141752318927}
   - component: {fileID: 7103483710855517313}
   - component: {fileID: 2876910607765812951}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 3164933998619108503}
   - component: {fileID: 6375365523881561700}
   - component: {fileID: 9079836510267191253}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,12 +134,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812846720392735347}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5789948878253701101}
+  m_Father: {fileID: 7625251231099552877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6375365523881561700
 BoxCollider2D:
@@ -173,7 +173,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -184,7 +184,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.5}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &9079836510267191253
 MonoBehaviour:
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 5789948878253701101}
   - component: {fileID: 2449914345254922799}
   - component: {fileID: 5366285086510519699}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,8 +228,7 @@ Transform:
   m_LocalPosition: {x: 0.318, y: 0.212, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3164933998619108503}
+  m_Children: []
   m_Father: {fileID: 8929091141752318927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -100.01}
 --- !u!95 &2449914345254922799
@@ -316,7 +315,7 @@ GameObject:
   - component: {fileID: 5840081134241504818}
   - component: {fileID: 1066628024996995108}
   - component: {fileID: 1160249756627725299}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DefenseCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2929337293778693664}
+  m_Father: {fileID: 7625251231099552877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1066628024996995108
 BoxCollider2D:
@@ -370,7 +369,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -381,7 +380,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &1160249756627725299
 MonoBehaviour:
@@ -406,7 +405,7 @@ GameObject:
   - component: {fileID: 2929337293778693664}
   - component: {fileID: 1196292313997183039}
   - component: {fileID: 5307807123132630341}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ShieldSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,8 +424,7 @@ Transform:
   m_LocalPosition: {x: -0.057, y: 0.481, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5840081134241504818}
+  m_Children: []
   m_Father: {fileID: 8929091141752318927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1196292313997183039
@@ -537,6 +535,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3164933998619108503}
+  - {fileID: 5840081134241504818}
   - {fileID: 8929091141752318927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -589,10 +589,10 @@ BoxCollider2D:
     m_Bits: 256
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -689,8 +689,9 @@ MonoBehaviour:
     m_Bits: 128
   attackCollider: {fileID: 9079836510267191253}
   shieldCollider: {fileID: 1160249756627725299}
-  baseAttackTime: 0.5
-  baseDefenseTime: 0.3
+  <HitAnimationTime>k__BackingField: 0.15
+  <JumpAnimationTime>k__BackingField: 0.15
+  <DefenseAnimationTime>k__BackingField: 0.5
 --- !u!114 &4120859068074822751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,4 +704,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa210f9be0f17fa469212111672d67ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sqrMaxVelocity: 25
+  sqrMaxVelocity: 20

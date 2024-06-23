@@ -8,22 +8,21 @@ using UnityEngine.AddressableAssets;
 public class StageManager : UnitySingleton<StageManager> {
     #region field
     [SerializeField] AssetReference playerAssetRef;
-    public PlayerContainer player {get; private set;}
-    Dictionary<int, BaseContainer> fieldContainers;
+    public PlayerContainer player { get; private set; }
+    Dictionary<int, MonsterContainer> fieldContainers;
     StageInfo stageInfo;
     Coroutine stageCoroutine;
-    Dictionary<string, CustomPool<BaseContainer>> pool;
+    CustomPool<MonsterContainer> pool;
     [SerializeField] List<AssetReference> stageInfos;
     public event Action<float, float> stageProgress;
     #endregion
     #region public method
     protected override void Initialize() {
-        fieldContainers = new Dictionary<int, BaseContainer>();
-        pool = new Dictionary<string, CustomPool<BaseContainer>>();
+        fieldContainers = new Dictionary<int, MonsterContainer>();
     }
     public void DeployPlayer(CharacterStat toStat, Action<PlayerContainer> onDeploySuccess = null) {
         if (player == null) {
-            DataManager.Instance.DeployAsset<GameObject>(playerAssetRef, Vector3.zero, Quaternion.identity, obj => {
+            DataManager.Instance.DeployAsset<GameObject>(playerAssetRef, new Vector3(0, 1, 0), Quaternion.identity, obj => {
                 player = obj.GetComponent<PlayerContainer>();
                 InitPlayer(toStat);
                 onDeploySuccess?.Invoke(player);
@@ -42,11 +41,10 @@ public class StageManager : UnitySingleton<StageManager> {
     void StartStage(StageInfo stageInfo) {
         this.stageInfo = stageInfo;
         foreach (var mon in stageInfo.assets) {
-            DataManager.Instance.LoadAsset<BaseContainer>(mon,
+            DataManager.Instance.LoadAsset<GameObject>(mon,
                 obj => {
-                    pool.Add(mon.AssetGUID,
-                        CustomPool<BaseContainer>.MakePool(obj, null, OnCreateMonster, OnGetMonster, OnReleaseMonster, OnDestroyMonster, 10, true)
-                        );
+                    if (obj.TryGetComponent<MonsterContainer>(out var comp))
+                        pool = CustomPool<MonsterContainer>.MakePool(comp, null, OnCreateMonster, OnGetMonster, OnReleaseMonster, OnDestroyMonster, 10, true);
                 });
         }
         stageCoroutine = StartCoroutine(OnStage(stageInfo));
@@ -56,29 +54,28 @@ public class StageManager : UnitySingleton<StageManager> {
         stageCoroutine = null;
         ReleaseMonster();
     }
-    public BaseContainer TryGetContainer(int id) {
+    public MonsterContainer TryGetContainer(int id) {
         if (fieldContainers.TryGetValue(id, out var container))
             return container;
         return null;
     }
     #endregion
     #region private mathod
-    private void OnCreateMonster(BaseContainer container) {
+    private void OnCreateMonster(MonsterContainer container, CustomPool<MonsterContainer> pool) {
         fieldContainers.Add(container.gameObject.GetInstanceID(), container);
-    }
-    private void OnGetMonster(BaseContainer container) {
-        container.gameObject.SetActive(true);
-    }
-    private void OnReleaseMonster(BaseContainer container) {
         container.gameObject.SetActive(false);
     }
-    private void OnDestroyMonster(BaseContainer container) {
+    private void OnGetMonster(MonsterContainer container) {
+        container.gameObject.SetActive(true);
+    }
+    private void OnReleaseMonster(MonsterContainer container) {
+        container.gameObject.SetActive(false);
+    }
+    private void OnDestroyMonster(MonsterContainer container) {
         fieldContainers.Remove(container.GetInstanceID());
     }
     private void ReleaseMonster() {
-        foreach (var mons in pool.Values) {
-            mons.ReleaseAll();
-        }
+        pool.ReleaseAll();
     }
     IEnumerator OnStage(StageInfo stageInfo) {
         float passedTime = 0;
@@ -88,7 +85,7 @@ public class StageManager : UnitySingleton<StageManager> {
             passedTime += Time.deltaTime;
             countTime += Time.deltaTime;
             if (countTime >= stageInfo.stageInfos[index].fromBeforeMonster) {
-                DeployMonster(stageInfo.assets[stageInfo.stageInfos[index].index].AssetGUID, stageInfo.stageInfos[index].stat);
+                DeployMonster(stageInfo.assets[stageInfo.stageInfos[index].index].AssetGUID, stageInfo.stageInfos[index].stat.ConvertToBaseStat());
                 countTime = 0;
             }
             stageProgress?.Invoke(passedTime, stageInfo.limitTime);
@@ -96,15 +93,15 @@ public class StageManager : UnitySingleton<StageManager> {
         }
     }
     void DeployMonster(string guid, BaseStat toStat) {
-        if (pool.TryGetValue(guid, out var mons)) {
-            var mon = mons.Get();
-            mon.Initialize(toStat);
-        }
+        var mon = pool.Get();
+        mon.transform.position = new Vector2(0, 30);
+        mon.Initialize(toStat);
+        mon.HealthSystem.OnDead += data => pool.Release(mon);
     }
+
     void InitPlayer(CharacterStat toStat) {
         player.Initialize(toStat);
         InputManager.Instance.ConnectInput(player);
-        fieldContainers.Add(player.gameObject.GetInstanceID(), player);
         player.HealthSystem.OnDead += (data) => InputManager.Instance.DisconnectInput(player);
     }
     #endregion

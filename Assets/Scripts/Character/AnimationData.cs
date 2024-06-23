@@ -9,6 +9,7 @@ public class AnimationData {
     [SerializeField] List<StateInfo> parametername;
 
     public void InitializeAnimatorHash() {
+        AnimatorHash = new Dictionary<EFsmState, int>();
         foreach (var str in parametername) {
             AnimatorHash.Add(str.state, Animator.StringToHash(str.parameterName));
         }

@@ -1,11 +1,8 @@
 using Define;
-using Skill;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEditor.AddressableAssets.Build;
-using UnityEngine;
 
 namespace Stat {
     [Serializable]
@@ -141,7 +138,11 @@ namespace Stat {
     }
     [Serializable]
     public class CustomStat {
-        public List<StatPair> statList;
+        public List<StatPair> statList = new List<StatPair>() {
+            new StatPair(EStatType.Health, 10),
+            new StatPair(EStatType.NormalAtk, 10),
+            new StatPair(EStatType.JumpMass, 1),
+        };
         Dictionary<EStatType, int> statMap;
         EStatType[] types;
         BaseStat convertBaseStat;
