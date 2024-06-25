@@ -6,6 +6,7 @@ using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
+using Character;
 
 public class UIStageInfo : UIBase {
     [SerializeField] List<TextPair> texts;

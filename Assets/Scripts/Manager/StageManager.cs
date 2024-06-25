@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.AddressableAssets;
+using Character;
+using Character2D;
 
 public class StageManager : UnitySingleton<StageManager> {
     #region field

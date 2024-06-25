@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using Character;
 
 public class CharacterManager : UnitySingleton<CharacterManager> {
     [SerializeField] CustomStat playerBaseStat;

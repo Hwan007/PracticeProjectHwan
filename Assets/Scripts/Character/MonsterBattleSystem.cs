@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using Character;
+using Character2D;
 
 public class MonsterBattleSystem : BaseBattleSystem {
     public event Action<BaseContainer> OnHitTarget;

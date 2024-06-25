@@ -7,6 +7,7 @@ using System.Text;
 using TMPro;
 using UI;
 using UnityEngine;
+using Character;
 
 public class UIStatus : UIBase {
     [SerializeField] List<TextPair> texts;

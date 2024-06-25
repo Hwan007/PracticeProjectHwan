@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Character;
 public class UISkillBtn : UIBase {
     [SerializeField] List<TextPair> texts;
     [SerializeField] Button JumpSkill;

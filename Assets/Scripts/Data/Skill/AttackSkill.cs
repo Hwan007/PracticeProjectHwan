@@ -2,6 +2,7 @@ using Define;
 using Stat;
 using System.Collections;
 using UnityEngine;
+using Character;
 
 namespace Skill {
     [CreateAssetMenu(menuName = "Skill/Attack Skill")]

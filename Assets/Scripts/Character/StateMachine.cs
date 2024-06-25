@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Define;
+using Character;
+using Character2D;
 
 public class StateMachine : IControllerable {
     protected Dictionary<EFsmState, IState> states;
@@ -8,7 +10,7 @@ public class StateMachine : IControllerable {
     public PlayerContainer Container { get; protected set; }
     public CharacterStat CharacterStat { get => Container.CharacterStat; }
     public HealthSystem HealthSystem { get => Container.HealthSystem; }
-    public PlayerMovement Movement { get => Container.Movement; }
+    public PlayerPlatformerMovement Movement { get => Container.Movement; }
     public PlayerBattleSystem BattleSystem { get => Container.BattleSystem; }
     public BaseSpriteController SpriteController { get => Container.SpriteController; }
     public AnimationData animationData { get; protected set; }

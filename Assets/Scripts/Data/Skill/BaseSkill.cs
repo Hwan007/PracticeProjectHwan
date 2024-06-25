@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Character;
 
 namespace Skill {
     public abstract class BaseSkill : ScriptableObject {
